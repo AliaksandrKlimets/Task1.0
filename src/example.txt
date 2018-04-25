@@ -1,0 +1,5 @@
+Corn,Arabica,10,200,300,400
+Ground,Arabica,10,200,40,120
+Corn,Liberica,10,150,150,50
+Ground,Arabica,10,140,120,50
+Corn,Liberica,10,120,100,10
