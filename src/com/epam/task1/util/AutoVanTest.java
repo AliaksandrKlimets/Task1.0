@@ -28,6 +28,7 @@ public class AutoVanTest {
                             Double.parseDouble(buff[5])));
                     van.setBalanceAmount(van.getBalanceAmount()-Double.parseDouble(buff[2])-Double.parseDouble(buff[3]));
                     van.setBalanceCost(van.getBalanceCost()-Double.parseDouble(buff[4]));
+                    System.out.println("added");
                 }
                 else {
                     System.out.println("Error, Van is full");
