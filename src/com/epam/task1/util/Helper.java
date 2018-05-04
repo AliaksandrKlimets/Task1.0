@@ -7,8 +7,17 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * This class is used to work with van
+ *
+ */
+
 public class Helper {
    private Scanner scanner = new Scanner(System.in);
+
+   /** This method is used to choose the method to work with
+    * @return the method number
+    */
 
    public int menu() {
         System.out.println("1) Enter product");
@@ -20,6 +29,11 @@ public class Helper {
         System.out.println("7) Auto test");
         return Integer.parseInt(scanner.nextLine());
      }
+
+   /**
+    * Add entity to van
+    * @param van
+    */
 
    public void addCoffee(Van van){
       System.out.print("Enter state - 1) Corn  2) Ground  3) Soluble in cans  4) Soluble in packets: ");
@@ -51,6 +65,10 @@ public class Helper {
             System.out.println();
    }
 
+   /**
+    * This method show the contents of van
+    * @param van
+    */
    public void showVan(Van van){
       System.out.println("Start amount: "+van.getVanAmount());
       System.out.println("Your amount: "+van.getBalanceAmount());
@@ -62,12 +80,20 @@ public class Helper {
 
    }
 
+   /**
+    * This method is used to sort van
+    * @param van_elem
+    */
    public void sortVan(Van van_elem){
       Collections.sort(van_elem.getVan());
       System.out.println("Sorted");
       System.out.println();
    }
 
+   /**
+    * This method is used to search van entity by any parameters
+    * @param van_elem
+    */
    public void searchProduct(Van van_elem){
       List<Coffee> van = van_elem.getVan();
       Search search = new Search();
@@ -88,23 +114,43 @@ public class Helper {
       }
    }
 
+   /**
+    * This method is used to delete entity from van
+    * @param van_elem
+    */
    public void deleteProduct(Van van_elem){
       int i =0;
       List<Coffee> van = van_elem.getVan();
-      for (Coffee coffee :van) {
+      for (Coffee coffee :van_elem.getVan()) {
          System.out.print((i+1)+") ");
          System.out.println(coffee.toString());
          i++;
 
       }
       System.out.println("Which one you wanna delete?");
-      int index = Integer.parseInt(scanner.nextLine());
-      if(index<=van.size())
-         van.remove(van.get(index-1));
-      else System.out.println("Not right index");
+      String buff = scanner.nextLine();
+      if(buff.equals("all")) {
+         for (int j = 0; j < van.size(); ) {
+            van_elem.setBalanceCost(van.get(j).getCost() + van_elem.getBalanceCost());
+            van_elem.setBalanceAmount(van.get(j).getAmount()+van.get(j).getPackAmount() + van_elem.getBalanceAmount());
+            van.remove(van.get(j));
+         }
+      }else {
+         int index = Integer.parseInt(buff);
+         if (index <= van.size()) {
+            van_elem.setBalanceCost(van.get(index - 1).getCost() + van_elem.getBalanceCost());
+            van_elem.setBalanceAmount(van.get(index - 1).getAmount() + van_elem.getBalanceAmount());
+            van.remove(van.get(index - 1));
+         } else System.out.println("Not right index");
+      }
 
    }
 
+   /**
+    * This method is used to choose the coffee kind
+    * @param i
+    * @return the kind
+    */
    public  String setKind(int i){
       switch (i){
          case 1: return "Arabic";
@@ -114,6 +160,11 @@ public class Helper {
       }
    }
 
+   /**
+    * This method is used to choose the coffee state
+    * @param i
+    * @return the state
+    */
    public  String setPhysicalState(int i){
       switch (i){
          case 1: return "Corn";

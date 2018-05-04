@@ -1,6 +1,10 @@
 package com.epam.task1.entity;
 
 
+/**
+ * Entity
+ */
+
 public class Coffee implements Comparable<Coffee>{
     private String physicalState;
     private String kind;

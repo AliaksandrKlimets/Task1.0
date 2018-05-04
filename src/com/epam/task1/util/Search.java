@@ -5,6 +5,11 @@ import com.epam.task1.entity.Coffee;
 import java.util.List;
 import java.util.Scanner;
 
+
+/**
+ * This class contains of methods to search entities by any parameters
+ *
+ */
 public class Search {
     private Scanner scanner = new Scanner(System.in);
     public  void searchCost(List<Coffee> van){

@@ -13,6 +13,11 @@ import java.nio.file.Paths;
 import java.util.List;
 
 public class AutoVanTest {
+
+    /**
+     * This method is used to test the work of our application
+     * @param van
+     */
     public void run(Van van){
         List<String> lines;
         File file = new File("src/Example.txt");

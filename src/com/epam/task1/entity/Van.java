@@ -3,6 +3,10 @@ package com.epam.task1.entity;
 import java.util.ArrayList;
 import java.util.List;
 
+
+/**
+ * Entity container
+ */
 public class Van {
     private double maxCost;
     private double balanceCost;

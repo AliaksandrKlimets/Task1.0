@@ -1,14 +1,19 @@
 package com.epam.task1.runner;
 
-import com.epam.task1.entity.Coffee;
 import com.epam.task1.entity.Van;
 import com.epam.task1.util.AutoVanTest;
 import com.epam.task1.util.Helper;
 
-import java.util.Collections;
 import java.util.Scanner;
 
-public class Main {
+/**
+ * @version 1.01
+ * This class is used to work with methods which is used to work with our van
+ * Although, you can test our application by using {@see AutoVanTest#run}
+ * @author Aliaksanr Klimets
+ */
+
+public class Runner {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter max amount: ");
