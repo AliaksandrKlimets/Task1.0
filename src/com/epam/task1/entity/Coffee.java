@@ -72,4 +72,25 @@ public class Coffee implements Comparable<Coffee>{
         if(res>-1 && res<0) res = -1.0;
         return (int)res;
     }
+
+    @Override
+    public boolean equals(Object obj){
+        if (this == obj) return true;
+        if (null == obj) return false;
+        if (getClass() != obj.getClass()) return  false;
+
+        Coffee coffee = (Coffee)obj;
+        if (amount != coffee.getAmount()) return  false;
+        if (packAmount != coffee.getPackAmount()) return false;
+        if (cost != coffee.getCost()) return  false;
+        if (weight != coffee.getWeight()) return  false;
+        if (!physicalState.equals(coffee.getPhysicalState())) return false;
+        if (!kind.equals(coffee.getKind())) return false;
+        return true;
+    }
+    
+    @Override
+    public int hashCode(){
+        return 31*(int)amount+32*(int)packAmount+33*(int)cost+34*(int)weight+physicalState.hashCode()+kind.hashCode();
+    }
 }

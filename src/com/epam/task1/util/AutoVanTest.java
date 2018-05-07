@@ -20,10 +20,10 @@ public class AutoVanTest {
      */
     public void run(Van van){
         List<String> lines;
-        File file = new File("src/Example.txt");
+        File file = new File("src/example.txt");
         String[] buff;
         try(FileReader reader = new FileReader(file)){
-            lines = Files.readAllLines(Paths.get("E:/Example.txt"), StandardCharsets.UTF_8);
+            lines = Files.readAllLines(Paths.get("src/example.txt"), StandardCharsets.UTF_8);
             for (String str : lines) {
                 buff = str.split(",");
                 if((van.getBalanceAmount()-Double.parseDouble(buff[2])-Double.parseDouble(buff[3]))>0 &&
@@ -51,5 +51,12 @@ public class AutoVanTest {
         helper.showVan(van);
         helper.sortVan(van);
         helper.showVan(van);
+
+        for (Coffee coffee :van.getVan()) {
+            for (Coffee coffee1 :van.getVan()) {
+                System.out.println(coffee.equals(coffee1));
+            }
+        }
+
     }
 }
