@@ -88,7 +88,7 @@ public class Coffee implements Comparable<Coffee>{
         if (!kind.equals(coffee.getKind())) return false;
         return true;
     }
-    
+
     @Override
     public int hashCode(){
         return 31*(int)amount+32*(int)packAmount+33*(int)cost+34*(int)weight+physicalState.hashCode()+kind.hashCode();

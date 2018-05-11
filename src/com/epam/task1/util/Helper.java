@@ -2,6 +2,7 @@ package com.epam.task1.util;
 
 import com.epam.task1.entity.Coffee;
 import com.epam.task1.entity.Van;
+import org.apache.log4j.Logger;
 
 import java.util.Collections;
 import java.util.List;
@@ -13,6 +14,7 @@ import java.util.Scanner;
  */
 
 public class Helper {
+   public static final Logger logger = Logger.getLogger("com.epam.task1.util");
    private Scanner scanner = new Scanner(System.in);
 
    /** This method is used to choose the method to work with
@@ -23,10 +25,11 @@ public class Helper {
         System.out.println("1) Enter product");
         System.out.println("2) Show van");
         System.out.println("3) Sort van");
-        System.out.println("4) Search from parametres");
+        System.out.println("4) Search from parameters");
         System.out.println("5) Delete product");
         System.out.println("6) Exit");
         System.out.println("7) Auto test");
+        logger.info("Show menu");
         return Integer.parseInt(scanner.nextLine());
      }
 
@@ -55,10 +58,10 @@ public class Helper {
                   van.getVan().add(new Coffee(physicalState, kind, amount, packAmount, cost, weight));
                   van.setBalanceCost(van.getBalanceCost()-cost);
                   van.setBalanceAmount(van.getBalanceAmount()-amount-packAmount);
-                  System.out.println("Added");
+                  logger.info("Prod added");
                }
                else {
-                  System.out.println("Didn't add. See your params");
+                  logger.info("Didn't add. See your params");
                   break;
                }
             }
@@ -70,6 +73,7 @@ public class Helper {
     * @param van
     */
    public void showVan(Van van){
+      logger.debug("Start show van");
       System.out.println("Start amount: "+van.getVanAmount());
       System.out.println("Your amount: "+van.getBalanceAmount());
       System.out.println("Max cost: "+van.getMaxCost());
@@ -77,7 +81,7 @@ public class Helper {
       for (Coffee coffee : van.getVan()) {
          System.out.println(coffee.toString());
       }
-
+      logger.debug("End show van");
    }
 
    /**
@@ -85,9 +89,9 @@ public class Helper {
     * @param van_elem
     */
    public void sortVan(Van van_elem){
+      logger.debug("Start sort");
       Collections.sort(van_elem.getVan());
-      System.out.println("Sorted");
-      System.out.println();
+      logger.debug("End sort");
    }
 
    /**
@@ -99,15 +103,20 @@ public class Helper {
       Search search = new Search();
       System.out.println("Search by: 1)Cost 2)Weight 3)Amount 4)State 5)Kind ");
       switch (Integer.parseInt(scanner.nextLine())){
-         case 1: search.searchCost(van);
+         case 1:logger.debug("Use have chosen search by cost");
+            search.searchCost(van);
             break;
-         case 2: search.searchWeight(van);
+         case 2:logger.debug("Use have chosen search by weight");
+            search.searchWeight(van);
             break;
-         case 3: search.searchAmount(van);
+         case 3:logger.debug("Use have chosen search by amount");
+            search.searchAmount(van);
             break;
-         case 4: search.searchPhysicalState(van);
+         case 4:logger.debug("Use have chosen search by state");
+            search.searchPhysicalState(van);
             break;
-         case 5: search.searchKind(van);
+         case 5:logger.debug("Use have chosen search by kind");
+            search.searchKind(van);
             break;
          default:
             System.out.println("Error");

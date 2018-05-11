@@ -2,6 +2,7 @@ package com.epam.task1.util;
 
 import com.epam.task1.entity.Coffee;
 import com.epam.task1.entity.Van;
+import org.apache.log4j.Logger;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -18,12 +19,16 @@ public class AutoVanTest {
      * This method is used to test the work of our application
      * @param van
      */
+    public static final Logger logger = Logger.getLogger("com.epam.task1.util");
     public void run(Van van){
+
         List<String> lines;
         File file = new File("src/example.txt");
         String[] buff;
+        van.getVan().clear();
         try(FileReader reader = new FileReader(file)){
             lines = Files.readAllLines(Paths.get("src/example.txt"), StandardCharsets.UTF_8);
+            logger.debug("Read lines from file");
             for (String str : lines) {
                 buff = str.split(",");
                 if((van.getBalanceAmount()-Double.parseDouble(buff[2])-Double.parseDouble(buff[3]))>0 &&
@@ -33,7 +38,7 @@ public class AutoVanTest {
                             Double.parseDouble(buff[5])));
                     van.setBalanceAmount(van.getBalanceAmount()-Double.parseDouble(buff[2])-Double.parseDouble(buff[3]));
                     van.setBalanceCost(van.getBalanceCost()-Double.parseDouble(buff[4]));
-                    System.out.println("added");
+                    logger.info("Product has been added");
                 }
                 else {
                     System.out.println("Error, Van is full");
@@ -41,13 +46,12 @@ public class AutoVanTest {
             }
 
         }catch (FileNotFoundException e){
-            System.out.println("File not found");
+            logger.error("File not found "+ e);
         } catch (IOException e){
-            System.out.println("Error");
+            logger.error("Error "+e);
         }
 
         Helper helper = new Helper();
-        System.out.println("Entered");
         helper.showVan(van);
         helper.sortVan(van);
         helper.showVan(van);
