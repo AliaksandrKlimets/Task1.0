@@ -3,7 +3,9 @@ package com.epam.task1.runner;
 import com.epam.task1.entity.Van;
 import com.epam.task1.util.AutoVanTest;
 import com.epam.task1.util.Helper;
+import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
+import org.apache.log4j.xml.DOMConfigurator;
 
 import java.util.ResourceBundle;
 import java.util.Scanner;
@@ -16,47 +18,47 @@ import java.util.Scanner;
  */
 
 public class Runner {
-    public static final Logger logger = Logger.getLogger("com.epam.task1.runner");
+   public static final Logger logger = Logger.getLogger("com.epam.task1.runner");
 
     public static void main(String[] args) {
         logger.setResourceBundle(ResourceBundle.getBundle("log4j"));
         Scanner scanner = new Scanner(System.in);
-        System.out.print("Enter max amount: ");
+        logger.info("Enter max amount: ");
         double amount = Double.parseDouble(scanner.nextLine());
-        logger.info("User enter max amount");
-        System.out.print("Enter max cost: ");
+        logger.debug("User enter max amount");
+        logger.info("Enter max cost: ");
         double cost = Double.parseDouble(scanner.nextLine());
-        logger.info("User enter max cost");
+        logger.debug("User enter max cost");
         Van van = new Van(amount,cost);
         boolean bl = true;
         Helper help = new Helper();
         while(bl){
             switch (help.menu()){
                 case 1: {
-                    logger.info("User have chosen addCoffee() ");
+                    logger.debug("User have chosen addCoffee() ");
                     help.addCoffee(van);
                     break;}
                 case 2: {
-                    logger.info("User have chosen showVan()");
+                    logger.debug("User have chosen showVan()");
                     help.showVan(van);
                     break;}
                 case 3: {
-                    logger.info("User have chosen sortVan() ");
+                    logger.debug("User have chosen sortVan() ");
                     help.sortVan(van);
                     break;}
                 case 4: {
-                    logger.info("User have chosen searchVan()");
+                    logger.debug("User have chosen searchVan()");
                     help.searchProduct(van);
                     break;}
                 case 5: {
-                    logger.info("User have chosen deleteProduct() ");
+                    logger.debug("User have chosen deleteProduct() ");
                     help.deleteProduct(van);
                     break;}
                 case 6: {
-                    logger.info("User have chosen exit() ");
+                    logger.debug("User have chosen exit() ");
                     bl=false;
                     break;}
-                case 7:{logger.info("User have chosen autoVaTest() ");
+                case 7:{logger.debug("User have chosen autoVaTest() ");
                     new AutoVanTest().run(van);
                     bl=false;
                 break;

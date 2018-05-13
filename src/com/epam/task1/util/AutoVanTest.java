@@ -41,7 +41,7 @@ public class AutoVanTest {
                     logger.info("Product has been added");
                 }
                 else {
-                    System.out.println("Error, Van is full");
+                    logger.info("Error, Van is full");
                 }
             }
 
@@ -50,10 +50,13 @@ public class AutoVanTest {
         } catch (IOException e){
             logger.error("Error "+e);
         }
-
+        logger.debug("Create object");
         Helper helper = new Helper();
+        logger.debug("Show");
         helper.showVan(van);
+        logger.debug("Sort");
         helper.sortVan(van);
+        logger.debug("Show");
         helper.showVan(van);
 
         for (Coffee coffee :van.getVan()) {

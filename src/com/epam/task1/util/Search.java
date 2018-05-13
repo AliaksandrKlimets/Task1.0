@@ -16,9 +16,9 @@ public class Search {
     private Scanner scanner = new Scanner(System.in);
     public  void searchCost(List<Coffee> van){
         logger.debug("Start search by cost");
-        System.out.println("Enter min value");
+        logger.info("Enter min value");
             double min= Double.parseDouble(scanner.nextLine());
-        System.out.println("Enter max value");
+        logger.info("Enter max value");
             double max = Double.parseDouble(scanner.nextLine());
         for (Coffee coffee :van) {
             if (coffee.getCost()>=min && coffee.getCost()<=max)
@@ -28,9 +28,9 @@ public class Search {
     }
     public  void searchWeight(List<Coffee> van){
         logger.debug("Start search by weight");
-        System.out.println("Enter min value");
+        logger.info("Enter min value");
             double min= Double.parseDouble(scanner.nextLine());
-        System.out.println("Enter max value");
+        logger.info("Enter max value");
             double max = Double.parseDouble(scanner.nextLine());
         for (Coffee coffee :van) {
             if (coffee.getWeight()>=min && coffee.getWeight()<=max)
@@ -42,7 +42,7 @@ public class Search {
         logger.debug("Start search by amount");
         System.out.println("Enter min value");
             double min= Double.parseDouble(scanner.nextLine());
-        System.out.println("Enter max value");
+        logger.info("Enter max value");
             double max = Double.parseDouble(scanner.nextLine());
         for (Coffee coffee :van) {
             if ((coffee.getAmount()+coffee.getPackAmount())>=min && (coffee.getAmount()+coffee.getPackAmount())<=max)
@@ -53,7 +53,7 @@ public class Search {
     public  void searchPhysicalState(List<Coffee> van){
         logger.debug("Start search by state");
         Helper helper = new Helper();
-        System.out.print("Enter state - 1) Corn  2) Ground  3) Soluble in cans  4) Soluble in packets: ");
+        logger.info("Enter state - 1) Corn  2) Ground  3) Soluble in cans  4) Soluble in packets: ");
             String buff = helper.setPhysicalState(Integer.parseInt(scanner.nextLine()));
         for (Coffee coffee :van) {
             if (coffee.getPhysicalState().equals(buff))
@@ -64,7 +64,7 @@ public class Search {
     public  void searchKind(List<Coffee> van){
         logger.debug("Start search by kind");
         Helper helper = new Helper();
-        System.out.print("Enter kind - 1) Arabic  2) Liberic  3)Robust :");
+        logger.info("Enter kind - 1) Arabic  2) Liberic  3)Robust :");
         String buff = helper.setKind(Integer.parseInt(scanner.nextLine()));
         for (Coffee coffee :van) {
             if (coffee.getKind().equals(buff))

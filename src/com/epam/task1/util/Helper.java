@@ -22,14 +22,14 @@ public class Helper {
     */
 
    public int menu() {
-        System.out.println("1) Enter product");
-        System.out.println("2) Show van");
-        System.out.println("3) Sort van");
-        System.out.println("4) Search from parameters");
-        System.out.println("5) Delete product");
-        System.out.println("6) Exit");
-        System.out.println("7) Auto test");
-        logger.info("Show menu");
+        logger.info("1) Enter product");
+      logger.info("2) Show van");
+      logger.info("3) Sort van");
+      logger.info("4) Search from parameters");
+      logger.info("5) Delete product");
+      logger.info("6) Exit");
+      logger.info("7) Auto test");
+        logger.debug("Show menu");
         return Integer.parseInt(scanner.nextLine());
      }
 
@@ -65,7 +65,6 @@ public class Helper {
                   break;
                }
             }
-            System.out.println();
    }
 
    /**
@@ -74,10 +73,10 @@ public class Helper {
     */
    public void showVan(Van van){
       logger.debug("Start show van");
-      System.out.println("Start amount: "+van.getVanAmount());
-      System.out.println("Your amount: "+van.getBalanceAmount());
-      System.out.println("Max cost: "+van.getMaxCost());
-      System.out.println("Your cost: "+van.getBalanceCost());
+      logger.info("Start amount: "+van.getVanAmount());
+      logger.info("Your amount: "+van.getBalanceAmount());
+      logger.info("Max cost: "+van.getMaxCost());
+      logger.info("Your cost: "+van.getBalanceCost());
       for (Coffee coffee : van.getVan()) {
          System.out.println(coffee.toString());
       }
@@ -101,25 +100,25 @@ public class Helper {
    public void searchProduct(Van van_elem){
       List<Coffee> van = van_elem.getVan();
       Search search = new Search();
-      System.out.println("Search by: 1)Cost 2)Weight 3)Amount 4)State 5)Kind ");
+      logger.info("Search by: 1)Cost 2)Weight 3)Amount 4)State 5)Kind ");
       switch (Integer.parseInt(scanner.nextLine())){
-         case 1:logger.debug("Use have chosen search by cost");
+         case 1:logger.debug("User have chosen search by cost");
             search.searchCost(van);
             break;
-         case 2:logger.debug("Use have chosen search by weight");
+         case 2:logger.debug("User have chosen search by weight");
             search.searchWeight(van);
             break;
-         case 3:logger.debug("Use have chosen search by amount");
+         case 3:logger.debug("User have chosen search by amount");
             search.searchAmount(van);
             break;
-         case 4:logger.debug("Use have chosen search by state");
+         case 4:logger.debug("User have chosen search by state");
             search.searchPhysicalState(van);
             break;
-         case 5:logger.debug("Use have chosen search by kind");
+         case 5:logger.debug("User have chosen search by kind");
             search.searchKind(van);
             break;
          default:
-            System.out.println("Error");
+            logger.info("Error");
       }
    }
 
@@ -131,12 +130,12 @@ public class Helper {
       int i =0;
       List<Coffee> van = van_elem.getVan();
       for (Coffee coffee :van_elem.getVan()) {
-         System.out.print((i+1)+") ");
-         System.out.println(coffee.toString());
+         logger.info((i+1)+") ");
+         logger.info(coffee.toString());
          i++;
 
       }
-      System.out.println("Which one you wanna delete?");
+      logger.info("Which one you wanna delete?");
       String buff = scanner.nextLine();
       if(buff.equals("all")) {
          for (int j = 0; j < van.size(); ) {
@@ -150,7 +149,7 @@ public class Helper {
             van_elem.setBalanceCost(van.get(index - 1).getCost() + van_elem.getBalanceCost());
             van_elem.setBalanceAmount(van.get(index - 1).getAmount() + van_elem.getBalanceAmount());
             van.remove(van.get(index - 1));
-         } else System.out.println("Not right index");
+         } else logger.info("Not right index");
       }
 
    }
