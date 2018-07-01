@@ -49,4 +49,8 @@ public class Van {
     public double getMaxCost() {
         return maxCost;
     }
+
+    public void setVan(List<Coffee> van) {
+        this.van = van;
+    }
 }

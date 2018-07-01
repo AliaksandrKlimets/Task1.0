@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<coffeeElements xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                xmlns="http://tempuri.org/PurchaseOrderSchema.xsd"
+                xsi:noNamespaceSchemaLocation="coffe.xsd">
+    <coffee>
+        <physicalState>Corn</physicalState>
+        <kind>Liberic</kind>
+        <amount>10</amount>
+        <packAmount>20</packAmount>
+        <cost>30</cost>
+        <weight>40</weight>
+    </coffee>
+    <coffee>
+        <physicalState>Ground</physicalState>
+        <kind>Arabic</kind>
+        <amount>20</amount>
+        <packAmount>30</packAmount>
+        <cost>10</cost>
+        <weight>40</weight>
+    </coffee>
+    <coffee>
+        <physicalState>Soluble in cans</physicalState>
+        <kind>Arabic</kind>
+        <amount>10</amount>
+        <packAmount>10</packAmount>
+        <cost>20</cost>
+        <weight>40</weight>
+    </coffee>
+    <coffee>
+        <physicalState>Corn</physicalState>
+        <kind>Robust</kind>
+        <amount>10</amount>
+        <packAmount>20</packAmount>
+        <cost>10</cost>
+        <weight>10</weight>
+    </coffee>
+    <coffee>
+        <physicalState>Ground</physicalState>
+        <kind>Robust</kind>
+        <amount>50</amount>
+        <packAmount>10</packAmount>
+        <cost>20</cost>
+        <weight>10</weight>
+    </coffee>
+</coffeeElements>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:tns="http://tempuri.org/PurchaseOrderSchema.xsd"
+        targetNamespace="http://tempuri.org/PurchaseOrderSchema.xsd"
+        elementFormDefault="qualified">
+    <element name="coffeeElements">
+        <complexType>
+            <sequence>
+                <element name="coffee"
+                         type="tns:Coffee"
+                         minOccurs="0"
+                         maxOccurs="unbounded"/>
+            </sequence>
+        </complexType>
+    </element>
+    <complexType name="Coffee">
+        <sequence>
+            <element name="physicalState">
+                <simpleType>
+                    <restriction base="string">
+                        <enumeration value="Corn"/>
+                        <enumeration value="Ground"/>
+                        <enumeration value="Soluble in cans"/>
+                        <enumeration value="Soluble in packets"/>
+                    </restriction>
+                </simpleType>
+            </element>
+            <element name="kind">
+                <simpleType>
+                    <restriction base="string">
+                        <enumeration value="Arabic"/>
+                        <enumeration value="Liberic"/>
+                        <enumeration value="Robust"/>
+                    </restriction>
+                </simpleType>
+            </element>
+            <element name="amount" type="double"/>
+            <element name="packAmount" type="double"/>
+            <element name="cost" type="double"/>
+            <element name="weight" type="double"/>
+        </sequence>
+    </complexType>
+</schema>

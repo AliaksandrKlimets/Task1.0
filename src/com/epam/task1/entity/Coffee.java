@@ -65,6 +65,30 @@ public class Coffee implements Comparable<Coffee>{
                 + "; Cost/weight" + (cost/weight);
     }
 
+    public void setPhysicalState(String physicalState) {
+        this.physicalState = physicalState;
+    }
+
+    public void setKind(String kind) {
+        this.kind = kind;
+    }
+
+    public void setAmount(double amount) {
+        this.amount = amount;
+    }
+
+    public void setPackAmount(double packAmount) {
+        this.packAmount = packAmount;
+    }
+
+    public void setCost(double cost) {
+        this.cost = cost;
+    }
+
+    public void setWeight(double weight) {
+        this.weight = weight;
+    }
+
     @Override
     public int compareTo(Coffee coffee){
         double res = ((this.cost/this.weight) - (coffee.cost/coffee.weight));
